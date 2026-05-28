@@ -1,0 +1,41 @@
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: wkylin_site
+      MYSQL_USER: wkylin
+      MYSQL_PASSWORD: wkylin_password
+    volumes:
+      - wkylin-mysql:/var/lib/mysql
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./db/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    ports:
+      - "3306:3306"
+
+  wkylin-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: wkylin
+      MYSQL_PASSWORD: wkylin_password
+      MYSQL_DATABASE: wkylin_site
+    depends_on:
+      - mysql
+    ports:
+      - "4000:4000"
+
+  wkylin-web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    depends_on:
+      - wkylin-api
+    ports:
+      - "8080:80"
+
+volumes:
+  wkylin-mysql:

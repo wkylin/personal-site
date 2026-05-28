@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: clip;
+    color: rgb(241 245 249);
+    background: #090d12;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@layer components {
+  .motion-ready [data-reveal].reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 520ms ease,
+      transform 520ms ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .motion-ready [data-reveal].reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-ready [data-reveal].reveal,
+  .motion-ready [data-reveal].reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
