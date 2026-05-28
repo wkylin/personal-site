@@ -25,25 +25,25 @@ export type ProfileData = {
 };
 
 export const profileData: ProfileData = {
-  identity: ["15年+资深前端架构师", "工程化与架构治理专家", "技术团队管理者"],
+  identity: ["资深前端架构师", "工程化与架构治理专家", "技术团队管理者"],
   contacts: {
     phone: "15026835870",
-    email: "wkylin.w@qq.com",
+    email: "wkylin.w@gmail.com",
     github: "https://github.com/wkylin",
     juejin: "https://juejin.cn/user/289926798641176",
     demo: "https://pro-react-admin.vercel.app/",
     domain: "wkylin.cn",
   },
   metrics: [
-    { label: "架构经验", value: "15年+", detail: "长期主导中大型前端与全栈系统架构设计" },
+    { label: "架构经验", value: "长期一线", detail: "持续主导中大型前端与全栈系统架构设计" },
     { label: "系统治理", value: "多业务线", detail: "微前端、模块化与多团队协作体系落地" },
     { label: "工程体系", value: "全链路", detail: "组件体系、构建体系、发布流程与研发规范建设" },
-    { label: "稳定性治理", value: "99.88%", detail: "监控、质量门禁与性能优化闭环建设" },
+    { label: "稳定性治理", value: "可观测", detail: "监控、质量门禁与性能优化闭环建设" },
   ],
   advantages: [
     {
       title: "复杂前端架构设计",
-      body: "具备 15 年+ 前端与全栈研发经验，能根据业务规模选择合适的单体、模块化、微前端或平台化架构，明确应用边界、依赖关系、权限模型和演进路径，避免系统在长期迭代中失控。",
+      body: "具备10年+前端与全栈研发经验，能根据业务规模选择合适的单体、模块化、微前端或平台化架构，明确应用边界、依赖关系、权限模型和演进路径，避免系统在长期迭代中失控。",
     },
     {
       title: "工程化与研发效能",

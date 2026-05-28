@@ -48,10 +48,10 @@ export function HeroSection({ profile }: HeroSectionProps) {
           </h1>
           <p className="mt-4 text-sm leading-7 text-cyan-100/90 sm:text-base">{profile.identity.join(" / ")}</p>
           <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-            15年+一线前端与全栈研发经验，长期负责复杂业务系统的架构设计、工程治理和团队技术建设。擅长把大型应用拆成清晰边界、把重复交付沉淀为平台能力、把性能稳定性纳入日常研发流程。关注的不只是页面实现，更是架构演进、质量体系、研发效能和业务长期可维护性。
+            多年一线前端与全栈研发经验，长期负责复杂业务系统的架构设计、工程治理和团队技术建设。擅长把大型应用拆成清晰边界、把重复交付沉淀为平台能力、把性能稳定性纳入日常研发流程。关注的不只是页面实现，更是架构演进、质量体系、研发效能和业务长期可维护性。
           </p>
 
-          <div id="contact" className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap gap-3">
             <a
               className="inline-flex items-center gap-2 rounded-none border border-amber-300/70 bg-amber-300 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:-translate-y-px hover:bg-amber-200"
               href={profile.contacts.github}
@@ -63,7 +63,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
             </a>
             <a
               className="inline-flex items-center gap-2 rounded-none border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-white/10"
-              href={`mailto:${profile.contacts.email}`}
+              href="#contact"
             >
               <Mail size={18} />
               邮件联系
@@ -107,4 +107,3 @@ export function HeroSection({ profile }: HeroSectionProps) {
     </section>
   );
 }
-

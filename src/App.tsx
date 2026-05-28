@@ -1,4 +1,5 @@
 import { AdvantagesSection } from "./components/AdvantagesSection";
+import { ContactSection } from "./components/ContactSection";
 import { HeroSection } from "./components/HeroSection";
 import { InfluenceSection } from "./components/InfluenceSection";
 import { MetricsSection } from "./components/MetricsSection";
@@ -26,6 +27,7 @@ function App() {
           <ProjectsSection projects={profile.projects} />
           <SkillsSection skills={profile.skills} />
           <InfluenceSection contacts={profile.contacts} influence={profile.influence} />
+          <ContactSection />
         </div>
       </div>
 
