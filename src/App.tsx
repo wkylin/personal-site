@@ -1,5 +1,6 @@
 import {
   ArrowUpRight,
+  BatteryCharging,
   Binary,
   Boxes,
   BrainCircuit,
@@ -66,20 +67,21 @@ function App() {
 
   const stack = useMemo(
     () => [
-      { label: "React 19", icon: Sparkles },
-      { label: "Vue 3", icon: Globe2 },
-      { label: "Python", icon: Binary },
-      { label: "PyQt6", icon: Boxes },
-      { label: "MySQL", icon: Database },
-      { label: "MongoDB", icon: Database },
-      { label: "Nginx", icon: Server },
-      { label: "AIGC", icon: BrainCircuit },
+      { label: "前端架构治理", icon: Sparkles },
+      { label: "跨端交付体系", icon: Globe2 },
+      { label: "工程化平台", icon: Boxes },
+      { label: "Node.js 服务层", icon: Server },
+      { label: "数据与存储设计", icon: Database },
+      { label: "可视化工程", icon: Binary },
+      { label: "发布与稳定性", icon: Network },
+      { label: "AI 工程化", icon: BrainCircuit },
     ],
     [],
   );
 
   return (
-    <main className="min-h-screen overflow-x-clip bg-[radial-gradient(circle_at_10%_10%,rgba(34,211,238,0.14),transparent_30%),radial-gradient(circle_at_90%_20%,rgba(250,204,21,0.16),transparent_32%),#090d12] text-slate-100">
+    <main className="relative overflow-x-clip bg-[#090d12] text-slate-100">
+      <div className="site-curtain min-h-screen overflow-x-clip">
       <nav className="sticky top-0 z-40 w-full border-b border-white/10 bg-slate-950/70 backdrop-blur-xl" aria-label="主导航">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
           <a href="#hero" aria-label="WKylin 主页" className="flex items-center gap-2 text-sm font-semibold tracking-wide text-slate-100">
@@ -102,10 +104,13 @@ function App() {
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,rgba(34,211,238,0.12),transparent_34%,rgba(250,204,21,0.11))]" />
           <div className="relative z-10">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">Frontend Architecture OS</p>
-            <h1 className="mt-3 font-black leading-[0.9] tracking-[-0.03em] text-[clamp(2.35rem,12vw,5.6rem)]">WKylin</h1>
+            <h1 className="mt-3 flex items-end gap-3 px-4 py-4 text-6xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">
+              <span className="hero-wordmark" data-text="WKylin">WKylin</span>
+              <BatteryCharging className="hero-charge-icon mb-2 h-[0.46em] w-[0.46em] text-cyan-200 sm:mb-3" strokeWidth={1.8} />
+            </h1>
             <p className="mt-4 text-sm leading-7 text-cyan-100/90 sm:text-base">{profile.identity.join(" / ")}</p>
             <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-              10年+一线研发与架构经验，擅长把复杂系统拆成可维护的模块、把混乱流程梳成可复用的工程体系。日常和微前端、AIGC、低代码平台打交道，顺手也把性能、质量和交付节奏一起管住。说直白点，既写代码，也修系统；既搭架构，也尽量不让团队靠“玄学”推进项目。
+              15年+一线前端与全栈研发经验，长期负责复杂业务系统的架构设计、工程治理和团队技术建设。擅长把大型应用拆成清晰边界、把重复交付沉淀为平台能力、把性能稳定性纳入日常研发流程。关注的不只是页面实现，更是架构演进、质量体系、研发效能和业务长期可维护性。
             </p>
 
             <div id="contact" className="mt-7 flex flex-wrap gap-3">
@@ -129,20 +134,20 @@ function App() {
           </div>
 
           <aside className="relative z-10 mt-6 space-y-3 lg:mt-0" aria-label="个人信息摘要">
-            <div className="rounded-none border border-white/20 bg-slate-900/85 px-4 py-5 text-slate-100 shadow-[0_14px_30px_rgba(15,23,42,0.3)] sm:px-6 sm:py-6">
-              <p className="text-center text-[clamp(1.8rem,8vw,2.6rem)] font-black leading-tight tracking-[0.06em]">前端市界</p>
-              <p className="mt-2 text-center text-xs font-semibold tracking-[0.22em] text-slate-300">FRONTEND EDITION</p>
-              <p className="mx-auto mt-3 max-w-88 text-center text-[11px] leading-relaxed text-slate-300">
-                Independent Notes on Architecture, Interface and Engineering
+            <div className="brand-prism-panel rounded-none border border-white/20 bg-slate-900/85 px-4 py-5 text-slate-100 shadow-[0_14px_30px_rgba(15,23,42,0.3)] sm:px-6 sm:py-6">
+              <p className="relative z-10 text-center text-[clamp(1.8rem,8vw,2.6rem)] font-black leading-tight tracking-[0.06em]">前端市界</p>
+              <p className="relative z-10 mt-2 text-center text-xs font-semibold tracking-[0.22em] text-slate-300">FRONTEND EDITION</p>
+              <p className="relative z-10 mx-auto mt-3 max-w-88 text-center text-sm font-medium leading-relaxed text-slate-300">
+                以架构视角沉淀技术战略、工程体系与团队交付方法
               </p>
             </div>
 
             <div className="rounded-none border border-cyan-300/45 bg-slate-800/85 px-4 py-3 text-cyan-50">
               <div className="flex items-center gap-2 text-base font-bold">
                 <Globe2 size={18} />
-                <span>项目交付矩阵</span>
+                <span>架构交付矩阵</span>
               </div>
-              <p className="mt-1 text-sm text-slate-200">覆盖 Web / Python 桌面端 / 可视化 / 开源工程</p>
+              <p className="mt-1 text-sm leading-6 text-slate-200">面向复杂业务，贯通架构设计、工程治理、跨端实现、数据服务与稳定交付</p>
             </div>
 
             <div className="flex flex-wrap gap-2">
@@ -182,8 +187,8 @@ function App() {
 
         <section className="mt-8">
           <div className="reveal" data-reveal style={{ "--reveal-delay": "20ms" } as CSSProperties}>
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-300">Personal Advantages</p>
-            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">把复杂系统变成可治理资产</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-300">Architecture Capabilities</p>
+            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">以架构治理驱动业务演进、研发效能与技术资产沉淀</h2>
           </div>
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             {profile.advantages.map((item, index) => {
@@ -209,7 +214,7 @@ function App() {
         <section id="projects" className="mt-8">
           <div className="reveal" data-reveal style={{ "--reveal-delay": "40ms" } as CSSProperties}>
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-300">Selected Systems</p>
-            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">重点项目像产品一样呈现</h2>
+            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">用可落地项目验证架构判断、工程能力与交付结果</h2>
           </div>
 
           <div className="mt-4 space-y-4">
@@ -271,7 +276,8 @@ function App() {
                 style={{ "--reveal-delay": `${90 + index * 90}ms` } as CSSProperties}
               >
                 <h3 className="text-lg font-semibold">{skill.title}</h3>
-                <div className="mt-3 flex flex-wrap gap-2">
+                <p className="mt-3 text-sm leading-7 text-slate-300">{skill.summary}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
                   {skill.items.map((item) => (
                     <span key={item} className="rounded-none border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-slate-200 sm:text-sm">
                       {item}
@@ -336,13 +342,16 @@ function App() {
         </section>
 
       </div>
+      </div>
 
-      <footer className="mt-5 w-full bg-slate-950/70 px-4 py-6 sm:px-6 lg:px-8" aria-label="页脚信息">
+      <footer className="site-reveal-footer fixed bottom-0 left-0 z-0 w-full px-4 py-6 sm:px-6 lg:px-8" aria-label="页脚信息">
         <div className="mx-auto w-full max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">Frontend Architecture Journal</p>
           <h3 className="mt-2 text-2xl font-bold">WKylin.cn</h3>
-          <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-300">持续记录架构实践、工程化方法与可交付的技术决策。</p>
-          <div className="mt-5 flex items-center justify-center gap-1 pt-4 text-xs text-slate-400px">
+          <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-300">
+            持续沉淀前端架构、工程治理、AI 辅助研发与技术团队管理经验，把复杂系统建设、研发效能提升和关键技术决策转化为可复用的方法论。
+          </p>
+          <div className="mt-5 flex items-center justify-center gap-1 pt-4 text-xs text-slate-400">
             <span>© {new Date().getFullYear()} WKylin. All rights reserved.</span>
           </div>
         </div>

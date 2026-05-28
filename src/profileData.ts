@@ -20,12 +20,12 @@ export type ProfileData = {
   metrics: Array<{ label: string; value: string; detail: string }>;
   advantages: Array<{ title: string; body: string }>;
   projects: Project[];
-  skills: Array<{ title: string; items: string[] }>;
+  skills: Array<{ title: string; summary: string; items: string[] }>;
   influence: string[];
 };
 
 export const profileData: ProfileData = {
-  identity: ["资深前端架构师", "工程化专家", "技术团队管理者"],
+  identity: ["15年+资深前端架构师", "工程化与架构治理专家", "技术团队管理者"],
   contacts: {
     phone: "15026835870",
     email: "wkylin.w@qq.com",
@@ -35,39 +35,40 @@ export const profileData: ProfileData = {
     domain: "wkylin.cn",
   },
   metrics: [
-    { label: "全栈经验", value: "10年+", detail: "主导 20+ 中大型项目架构设计" },
-    { label: "开源项目", value: "148+", detail: "GitHub 长期维护与输出" },
-    { label: "提效实践", value: "300%", detail: "低代码平台驱动运营效率增长" },
-    { label: "线上治理", value: "99.88%", detail: "可用性治理与质量体系落地" },
+    { label: "架构经验", value: "15年+", detail: "长期主导中大型前端与全栈系统架构设计" },
+    { label: "系统治理", value: "多业务线", detail: "微前端、模块化与多团队协作体系落地" },
+    { label: "工程体系", value: "全链路", detail: "组件体系、构建体系、发布流程与研发规范建设" },
+    { label: "稳定性治理", value: "99.88%", detail: "监控、质量门禁与性能优化闭环建设" },
   ],
   advantages: [
     {
-      title: "架构与工程化专家",
-      body: "15 年全栈研发经验，主导过 20+ 中大型项目架构设计。擅长微前端、模块化架构及前端工程化体系建设，解决 30+ 子应用的整合难题。",
+      title: "复杂前端架构设计",
+      body: "具备 15 年+ 前端与全栈研发经验，能根据业务规模选择合适的单体、模块化、微前端或平台化架构，明确应用边界、依赖关系、权限模型和演进路径，避免系统在长期迭代中失控。",
     },
     {
-      title: "AIGC 技术先行者",
-      body: "深度探索 AI 辅助研发落地，主导 AIGC 平台从 0 到 1 建设，通过 Copilot 模式将研发效能提升 100%+。",
+      title: "工程化与研发效能",
+      body: "熟悉 Vite、Webpack、Monorepo、CI/CD、组件库、脚手架和规范体系建设，能把重复劳动沉淀成工具链和平台能力，让团队在多人协作、快速交付和代码质量之间保持稳定节奏。",
     },
     {
-      title: "降本增效实践者",
-      body: "通过低代码平台与组件库建设，让运营效率提升 300%，构建效率提升 70%，线上事故率降低 90%。",
+      title: "质量、性能与线上稳定性",
+      body: "重视可观测性、错误监控、性能预算、构建体积、首屏体验、灰度发布和回滚机制，能把线上问题从被动救火转为主动治理，让可用性、性能和质量成为研发流程的一部分。",
     },
     {
-      title: "团队技术领袖",
-      body: "10 年+ 团队管理经验，带领 10+ 人前端团队，搭建敏捷开发 3.0 与四维质量守护体系，擅长跨部门协同。",
+      title: "技术决策与团队赋能",
+      body: "有 10 年+ 团队管理和跨部门协作经验，能做技术选型、架构评审、Code Review、人才培养和复杂项目推进，帮助团队从个人经验驱动升级为标准、流程和工程资产驱动。",
     },
   ],
   projects: [
     {
       name: "wkylin.cn",
-      stack: "React + TypeScript + Vite",
-      background: "个人主页与作品集入口，集中展示个人能力、项目经验与联系方式。",
+      stack: "React 19 + TypeScript + Vite + Tailwind CSS + Node.js + MySQL",
+      background: "当前个人主站项目，用于集中呈现 15 年+前端架构经验、工程化能力、代表项目和联系方式。项目同时保留静态数据与 API 数据两种模式，方便在纯静态部署和服务端部署之间切换。",
       contributions: [
-        "负责首页信息架构与视觉表达，让项目、能力和联系路径一屏可达。",
-        "通过响应式布局和暗色科技风设计，提升个人品牌的辨识度。",
+        "基于 React + TypeScript 组织页面结构，将个人能力、架构优势、项目经历、技术栈和影响力拆成可维护的数据模型，内容可由静态文件或 MySQL 接口驱动。",
+        "设计 Vite 构建、环境变量、Node API、MySQL 初始化脚本、Nginx 反向代理与 Docker 镜像，覆盖本地开发、生产构建和服务器部署链路。",
+        "通过响应式布局、暗色科技风视觉、滚动 reveal 动效和移动端适配，强化个人技术品牌，同时保证页面首屏信息密度和访问路径清晰。",
       ],
-      result: "作为个人主站承载履历、项目和跳转入口，形成统一展示面。",
+      result: "形成一个可持续维护的个人技术品牌首页：既能作为静态站点独立部署，也能接入 Node + MySQL 扩展为动态内容服务。",
       url: "https://wkylin.cn",
     },
     {
@@ -128,24 +129,28 @@ export const profileData: ProfileData = {
   ],
   skills: [
     {
-      title: "前端架构",
-      items: ["React/Vue 全家桶生态", "Micro-App/Qiankun 微前端", "大型前端应用架构设计", "性能调优"],
+      title: "前端架构治理",
+      summary: "从业务复杂度出发设计应用形态，拆清边界、依赖和演进路径，让系统能支撑长期迭代。",
+      items: ["大型 SPA 架构", "微前端治理", "模块边界建模", "权限与路由体系", "技术选型评审"],
     },
     {
-      title: "全栈与 AI",
-      items: ["Node.js", "GraphQL", "Prisma", "SSE", "Markdown 渲染", "Prompt Engineering"],
+      title: "工程化体系建设",
+      summary: "把研发流程标准化、工具化和自动化，提升多人协作下的交付效率与代码一致性。",
+      items: ["Vite/Webpack 构建优化", "Monorepo 工程管理", "组件库与设计系统", "脚手架与代码规范", "CI/CD 发布流水线"],
     },
     {
-      title: "工程化与效能",
-      items: ["Webpack/Vite 构建优化", "CI/CD", "DevOps", "Sentry 私有化部署", "前端监控体系"],
+      title: "质量与稳定性闭环",
+      summary: "围绕性能、异常、发布和回滚建立治理机制，把线上稳定性纳入日常研发过程。",
+      items: ["性能预算", "前端监控", "错误追踪", "自动化测试", "质量门禁与灰度发布"],
     },
     {
-      title: "数据可视化",
-      items: ["ECharts", "D3.js", "Three.js", "GIS/SuperMap 系统集成"],
+      title: "平台化与 AI 工程化",
+      summary: "将通用能力沉淀为平台、服务和工具链，并探索 AI 在研发提效和业务体验中的落地方式。",
+      items: ["组件资产平台", "AIGC 辅助研发", "Node.js BFF 服务层", "数据可视化工程", "桌面端与 Web 融合"],
     },
   ],
   influence: [
-    "维护 pro-react-admin 等项目，累计 Star 900+，被多家企业用作脚手架模板。",
-    "运营公众号“前端市界”及掘金专栏，持续输出架构思考与前沿技术实践，文章阅读量累计超 20 万+",
+    "持续维护 pro-react-admin 等开源项目，沉淀企业后台架构、权限模型、工程规范与可复用模板，服务真实业务项目快速启动。",
+    "运营公众号“前端市界”及掘金专栏，长期输出前端架构、工程治理、AI 工程化与团队技术管理实践。",
   ],
 };

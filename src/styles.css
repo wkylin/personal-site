@@ -35,6 +35,137 @@
 }
 
 @layer components {
+  .site-curtain {
+    position: relative;
+    z-index: 1;
+    margin-bottom: var(--footer-reveal-height, 230px);
+    background:
+      radial-gradient(circle at 10% 10%, rgba(34, 211, 238, 0.14), transparent 30%),
+      radial-gradient(circle at 90% 20%, rgba(250, 204, 21, 0.16), transparent 32%),
+      #090d12;
+    box-shadow: 0 32px 90px rgba(0, 0, 0, 0.58);
+  }
+
+  .site-reveal-footer {
+    min-height: var(--footer-reveal-height, 230px);
+    display: flex;
+    align-items: center;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(34, 211, 238, 0.12), transparent 34%),
+      radial-gradient(circle at 82% 20%, rgba(250, 204, 21, 0.1), transparent 30%),
+      linear-gradient(180deg, rgba(2, 6, 23, 0.96), rgba(9, 13, 18, 0.98));
+    border-top: 1px solid rgba(148, 163, 184, 0.14);
+  }
+
+  .hero-wordmark {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    background:
+      linear-gradient(90deg, #f8fafc 0%, #cffafe 24%, #22d3ee 44%, #facc15 62%, #e2e8f0 82%, #f8fafc 100%);
+    background-size: 240% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    filter: drop-shadow(0 18px 42px rgba(34, 211, 238, 0.14));
+    animation: hero-wordmark-flow 7s ease-in-out infinite;
+  }
+
+  .hero-wordmark::before,
+  .hero-wordmark::after {
+    position: absolute;
+    inset: 0;
+    content: attr(data-text);
+    pointer-events: none;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  .hero-wordmark::before {
+    z-index: -1;
+    color: rgba(125, 249, 255, 0.14);
+    text-shadow:
+      0 0 18px rgba(34, 211, 238, 0.34),
+      0 0 54px rgba(34, 211, 238, 0.18),
+      0 0 90px rgba(250, 204, 21, 0.1);
+    transform: translate3d(0.02em, 0.02em, 0);
+    animation: hero-wordmark-depth 5.4s ease-in-out infinite;
+  }
+
+  .hero-wordmark::after {
+    color: transparent;
+    background:
+      linear-gradient(110deg, transparent 0%, transparent 44%, rgba(255, 255, 255, 0.12) 49%, rgba(125, 249, 255, 0.14) 52%, transparent 58%, transparent 100%);
+    background-size: 420% 100%;
+    mix-blend-mode: screen;
+    opacity: 0.14;
+    animation: hero-wordmark-sheen 10s ease-in-out infinite;
+  }
+
+  .hero-charge-icon {
+    flex: 0 0 auto;
+    filter:
+      drop-shadow(0 0 10px rgba(34, 211, 238, 0.34))
+      drop-shadow(0 0 26px rgba(250, 204, 21, 0.12));
+    animation: hero-charge-pulse 2.8s ease-in-out infinite;
+  }
+
+  .brand-prism-panel {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(8, 13, 24, 0.9)),
+      radial-gradient(circle at 50% 50%, rgba(125, 249, 255, 0.14), transparent 48%);
+  }
+
+  .brand-prism-panel::before,
+  .brand-prism-panel::after {
+    position: absolute;
+    inset: -35%;
+    z-index: 0;
+    content: "";
+    pointer-events: none;
+  }
+
+  .brand-prism-panel::before {
+    background:
+      conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(34, 211, 238, 0.08) 42deg,
+        rgba(250, 204, 21, 0.16) 78deg,
+        transparent 118deg,
+        rgba(148, 163, 184, 0.12) 180deg,
+        rgba(34, 211, 238, 0.18) 236deg,
+        transparent 310deg,
+        transparent 360deg
+      );
+    filter: blur(18px);
+    opacity: 0.78;
+    animation: brand-prism-rotate 18s linear infinite;
+  }
+
+  .brand-prism-panel::after {
+    inset: 0;
+    background:
+      linear-gradient(100deg, transparent 0%, rgba(125, 249, 255, 0.2) 42%, transparent 58%),
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size:
+      220% 100%,
+      100% 18px,
+      18px 100%;
+    mix-blend-mode: screen;
+    opacity: 0.58;
+    animation: brand-prism-scan 6s ease-in-out infinite;
+  }
+
+  .brand-prism-panel > * {
+    text-shadow:
+      0 0 24px rgba(125, 249, 255, 0.16),
+      0 0 48px rgba(15, 23, 42, 0.9);
+  }
+
   .motion-ready [data-reveal].reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -50,6 +181,94 @@
   }
 }
 
+@keyframes hero-wordmark-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes hero-wordmark-depth {
+  0%,
+  100% {
+    opacity: 0.82;
+    transform: translate3d(0.015em, 0.018em, 0) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate3d(-0.012em, 0.028em, 0) scale(1.012);
+  }
+}
+
+@keyframes hero-wordmark-sheen {
+  0%,
+  18% {
+    background-position: 145% 0;
+    opacity: 0;
+  }
+
+  42% {
+    opacity: 0.14;
+  }
+
+  68%,
+  100% {
+    background-position: -45% 0;
+    opacity: 0;
+  }
+}
+
+@keyframes hero-charge-pulse {
+  0%,
+  100% {
+    color: rgb(165 243 252);
+    opacity: 0.72;
+    transform: translateY(0) scale(1);
+  }
+
+  45% {
+    color: rgb(250 204 21);
+    opacity: 1;
+    transform: translateY(-0.04em) scale(1.08);
+  }
+
+  70% {
+    color: rgb(103 232 249);
+    opacity: 0.88;
+    transform: translateY(0) scale(1.02);
+  }
+}
+
+@keyframes brand-prism-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes brand-prism-scan {
+  0%,
+  100% {
+    background-position:
+      130% 0,
+      0 0,
+      0 0;
+    opacity: 0.42;
+  }
+
+  50% {
+    background-position:
+      -30% 0,
+      0 9px,
+      9px 0;
+    opacity: 0.72;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -60,5 +279,24 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .brand-prism-panel::before,
+  .brand-prism-panel::after,
+  .hero-wordmark,
+  .hero-wordmark::before,
+  .hero-wordmark::after,
+  .hero-charge-icon {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-curtain {
+    margin-bottom: var(--footer-reveal-height-mobile, 270px);
+  }
+
+  .site-reveal-footer {
+    min-height: var(--footer-reveal-height-mobile, 270px);
   }
 }
