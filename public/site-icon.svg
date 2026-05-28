@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="WKylin logo">
+  <defs>
+    <linearGradient id="panel" x1="12" y1="10" x2="84" y2="86" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="0.52" stop-color="#08111f"/>
+      <stop offset="1" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="22" y1="22" x2="76" y2="74" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.42" stop-color="#67e8f9"/>
+      <stop offset="0.72" stop-color="#facc15"/>
+      <stop offset="1" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.6" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.13 0 0 0 0 0.83 0 0 0 0 0.93 0 0 0 0.55 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="96" height="96" rx="22" fill="url(#panel)"/>
+  <path d="M18 24.5h60" stroke="#67e8f9" stroke-opacity=".22" stroke-width="1"/>
+  <path d="M18 71.5h60" stroke="#facc15" stroke-opacity=".18" stroke-width="1"/>
+  <path d="M24 18v60" stroke="#94a3b8" stroke-opacity=".12" stroke-width="1"/>
+  <path d="M72 18v60" stroke="#94a3b8" stroke-opacity=".12" stroke-width="1"/>
+
+  <g filter="url(#glow)">
+    <path
+      d="M19.5 30h8.4l6.3 27.8L43.1 30h7.2l8.7 27.8L65.4 30h8.1L62.9 66h-7.8l-8.6-26.8L37.8 66h-7.7L19.5 30Z"
+      fill="url(#mark)"
+    />
+    <path
+      d="M53.8 47.7 72.7 30h10.1L66.4 45.3 84 66H73.6L60.2 50.5l-6.4 5.9V66h-8V30h8v17.7Z"
+      fill="url(#mark)"
+      opacity=".92"
+    />
+  </g>
+
+  <circle cx="24" cy="24.5" r="2.2" fill="#67e8f9"/>
+  <circle cx="72" cy="71.5" r="2.2" fill="#facc15"/>
+  <path d="M26.2 24.5h8.8M61 71.5h8.8" stroke="#e2e8f0" stroke-opacity=".42" stroke-width="1.5"/>
+</svg>
