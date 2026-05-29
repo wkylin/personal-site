@@ -2,6 +2,7 @@ import { AdvantagesSection } from "./components/AdvantagesSection";
 import { ContactSection } from "./components/ContactSection";
 import { HeroSection } from "./components/HeroSection";
 import { InfluenceSection } from "./components/InfluenceSection";
+import { MagicTrail } from "./components/MagicTrail";
 import { MetricsSection } from "./components/MetricsSection";
 import { Navigation } from "./components/Navigation";
 import { ProjectsSection } from "./components/ProjectsSection";
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <main className="relative overflow-x-clip bg-[#090d12] text-slate-100">
+      <MagicTrail />
       <div className="site-curtain min-h-screen overflow-x-clip">
         <Navigation contacts={profile.contacts} />
         <HeroSection profile={profile} />
