@@ -10,6 +10,7 @@ import { SkillsSection } from "./components/SkillsSection";
 import { useProfile } from "./hooks/useProfile";
 import { useRevealMotion } from "./hooks/useRevealMotion";
 
+
 function App() {
   const profile = useProfile();
 

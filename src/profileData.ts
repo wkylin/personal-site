@@ -60,6 +60,18 @@ export const profileData: ProfileData = {
   ],
   projects: [
     {
+      name: "@w.ui/wui-react",
+      stack: "React 19 + Ant Design 6 + TypeScript + Vite",
+      background: "基于 React 19 和 Ant Design 6 的高质量组件库，面向中后台、内容展示、动画交互和媒体可视化场景，沉淀 100+ 可复用业务组件，并通过 npm 面向不同 React 项目分发。",
+      contributions: [
+        "设计主包聚合入口与 core / stateful / stateless 子路径多入口，兼顾向后兼容、按需导入和更细粒度的 tree-shaking。",
+        "沉淀 ErrorBoundary、KeepAlive、ResponsiveTable、TreeList、ReMarkdown、SmartVideoPlayer、OneTimePasscode、动画展示等组件，覆盖核心、有状态和无状态三类使用场景。",
+        "使用 TypeScript 提供完整类型定义，并支持主题定制、暗黑模式、响应式适配和国际化，提升组件在多项目中的集成稳定性。",
+      ],
+      result: "形成可通过 npm install @w.ui/wui-react 直接接入的组件资产库，并配套在线演示、Storybook 文档和 GitHub 仓库，支撑 React 项目快速复用。",
+      url: "https://www.npmjs.com/package/@w.ui/wui-react",
+    },
+    {
       name: "wkylin.cn",
       stack: "React 19 + TypeScript + Vite + Tailwind CSS + Node.js + MySQL",
       background: "当前个人主站项目，用于集中呈现 15 年+前端架构经验、工程化能力、代表项目和联系方式。项目同时保留静态数据与 API 数据两种模式，方便在纯静态部署和服务端部署之间切换。",
