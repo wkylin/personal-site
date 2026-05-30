@@ -14,12 +14,13 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         <h2 className="mt-2 text-2xl font-bold sm:text-3xl">用可落地项目验证架构判断、工程能力与交付结果</h2>
       </div>
 
-      <div className="mt-4 space-y-4">
+      <div className="mt-4 space-y-4" data-reveal-group data-reveal-base-delay="40" data-reveal-step-delay="90">
         {projects.map((project, index) => (
           <article
             key={project.name}
             className="reveal rounded-none border border-white/10 bg-slate-900/65 p-4 sm:p-6"
             data-reveal
+            data-reveal-item
             style={{ "--reveal-delay": `${index * 80}ms` } as CSSProperties}
           >
             <div className="flex flex-wrap items-start gap-4">

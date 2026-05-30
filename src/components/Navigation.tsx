@@ -43,12 +43,14 @@ export function Navigation({ contacts }: NavigationProps) {
 
     scheduleUpdate();
     window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("lenis-scroll", scheduleUpdate);
     window.addEventListener("resize", scheduleUpdate);
     window.addEventListener("hashchange", scheduleUpdate);
 
     return () => {
       window.cancelAnimationFrame(frameId);
       window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("lenis-scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
       window.removeEventListener("hashchange", scheduleUpdate);
     };

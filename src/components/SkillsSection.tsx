@@ -13,12 +13,13 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
         <h2 className="mt-2 text-2xl font-bold sm:text-3xl">从前端架构到 AI 工程化</h2>
       </div>
 
-      <div className="mt-4 grid gap-3 md:grid-cols-2">
+      <div className="mt-4 grid gap-3 md:grid-cols-2" data-reveal-group data-reveal-base-delay="70" data-reveal-step-delay="85">
         {skills.map((skill, index) => (
           <article
             key={skill.title}
             className="reveal rounded-none border border-white/10 bg-slate-900/55 p-5"
             data-reveal
+            data-reveal-item
             style={{ "--reveal-delay": `${90 + index * 90}ms` } as CSSProperties}
           >
             <h3 className="text-lg font-semibold">{skill.title}</h3>
@@ -36,4 +37,3 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
     </section>
   );
 }
-

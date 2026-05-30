@@ -7,12 +7,13 @@ type MetricsSectionProps = {
 
 export function MetricsSection({ metrics }: MetricsSectionProps) {
   return (
-    <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="核心指标">
+    <section className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="核心指标" data-reveal-group data-reveal-step-delay="65">
       {metrics.map((metric, index) => (
         <article
           key={metric.label}
           className="reveal rounded-none border border-white/10 bg-white/4 p-4 backdrop-blur"
           data-reveal
+          data-reveal-item
           style={{ "--reveal-delay": `${index * 70}ms` } as CSSProperties}
         >
           <p className="text-xs uppercase tracking-[0.12em] text-slate-400">{metric.label}</p>
@@ -23,4 +24,3 @@ export function MetricsSection({ metrics }: MetricsSectionProps) {
     </section>
   );
 }
-

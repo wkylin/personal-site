@@ -10,11 +10,13 @@ import { SiteFooter } from "./components/SiteFooter";
 import { SkillsSection } from "./components/SkillsSection";
 import { useProfile } from "./hooks/useProfile";
 import { useRevealMotion } from "./hooks/useRevealMotion";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
 
 function App() {
   const profile = useProfile();
 
+  useSmoothScroll();
   useRevealMotion([profile.projects]);
 
   return (
