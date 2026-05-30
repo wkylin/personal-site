@@ -1,5 +1,6 @@
 import { Send } from "lucide-react";
-import { type ChangeEvent, type ComponentPropsWithoutRef, useEffect, useState } from "react";
+import { type CSSProperties, type ChangeEvent, type ComponentPropsWithoutRef, useEffect, useState } from "react";
+import { siDailydotdev, siDevdotto, siHashnode, siJuejin, siX } from "simple-icons";
 
 const contactEmail = "wkylin.w@gmail.com";
 const web3FormsAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "44b28ec2-e0a1-459a-8e3b-06869186889b";
@@ -19,6 +20,51 @@ const initialFormData: ContactFormData = {
   subject: "",
   message: "",
 };
+
+const socialLinks = [
+  { label: "Juejin", href: "https://juejin.cn/user/289926798641176", icon: siJuejin, brandColor: `#${siJuejin.hex}` },
+  { label: "daily.dev", href: "https://app.daily.dev/wkylin", icon: siDailydotdev, brandColor: `#${siDailydotdev.hex}` },
+  { label: "Dev.to", href: "https://dev.to/wkylin", icon: siDevdotto, brandColor: `#${siDevdotto.hex}`, isDarkBrand: true },
+  { label: "X", href: "https://x.com/wkylin", icon: siX, brandColor: `#${siX.hex}`, isDarkBrand: true },
+  { label: "Medium", href: "https://medium.com/@wkylin.w", brandColor: "#000000", customIcon: "medium", isDarkBrand: true },
+  { label: "Hashnode", href: "https://hashnode.com/wkylin", icon: siHashnode, brandColor: `#${siHashnode.hex}` },
+  { label: "CodePen", href: "https://codepen.io/wkylin", brandColor: "#26c6da", customIcon: "codepen" },
+];
+
+type BrandIconProps = {
+  path: string;
+  title: string;
+};
+
+function BrandIcon({ path, title }: BrandIconProps) {
+  return (
+    <svg className="h-4.5 w-4.5" viewBox="0 0 24 24" role="img" aria-label={title} focusable="false">
+      <path fill="currentColor" d={path} />
+    </svg>
+  );
+}
+
+function CodePenIcon() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 32 32" role="img" aria-label="CodePen" focusable="false">
+      <path
+        fill="currentColor"
+        d="m8.303 19.008 7.313 4.876c.249.153.516.155.768 0l7.313-4.876c.187-.125.303-.348.303-.571v-4.875c0-.223-.116-.447-.303-.571l-7.313-4.875c-.249-.153-.516-.155-.768 0l-7.313 4.875c-.187.124-.303.348-.303.571v4.875c0 .223.116.446.303.571zm7.01 3.019-5.384-3.589 2.402-1.607 2.982 1.991zm1.374 0v-3.205l2.982-1.991 2.402 1.607zm5.938-4.876-1.723-1.151 1.723-1.152zm-5.938-7.178 5.384 3.589-2.402 1.607-2.982-1.991zm-.687 4.401 2.429 1.625-2.429 1.626-2.429-1.625zm-.687-4.401v3.205l-2.982 1.991-2.402-1.607zm-5.938 4.876 1.724 1.151-1.723 1.152v-2.303z"
+      />
+    </svg>
+  );
+}
+
+function MediumIcon() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 1043.63 592.71" role="img" aria-label="Medium" focusable="false">
+      <path
+        fill="currentColor"
+        d="M588.67 296.35c0 163.66-131.77 296.35-294.33 296.35S0 460.01 0 296.35 131.77 0 294.34 0s294.33 132.69 294.33 296.35zm322.89 0c0 154.06-65.89 278.96-147.18 278.96S617.2 450.41 617.2 296.35 683.09 17.39 764.38 17.39s147.18 124.9 147.18 278.96zm132.07 0c0 138-23.17 249.88-51.76 249.88s-51.76-111.88-51.76-249.88S963.28 46.47 991.87 46.47s51.76 111.88 51.76 249.88z"
+      />
+    </svg>
+  );
+}
 
 function validateForm(formData: ContactFormData) {
   const errors: ContactFormErrors = {};
@@ -160,6 +206,26 @@ export function ContactSection() {
         <p className="mt-4 text-sm leading-7 text-slate-300">
           表单会通过服务接口直接投递到 {contactEmail}，适合沟通前端架构、工程治理、技术顾问、项目合作或团队建设相关话题。
         </p>
+        <div className="mt-7">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">线上足迹</p>
+          <div className="mt-3 flex flex-wrap gap-2.5" aria-label="社交平台链接">
+            {socialLinks.map((item) => (
+              <a
+                key={item.label}
+                className="social-icon-link"
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={item.label}
+                data-tooltip={item.label}
+                data-dark-brand={item.isDarkBrand ? "true" : undefined}
+                style={{ "--brand-color": item.brandColor } as CSSProperties}
+              >
+                {item.customIcon === "codepen" ? <CodePenIcon /> : item.customIcon === "medium" ? <MediumIcon /> : item.icon && <BrandIcon path={item.icon.path} title={item.label} />}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
 
       <form
