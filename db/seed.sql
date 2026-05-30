@@ -28,6 +28,18 @@ VALUES (
     ),
     'projects', JSON_ARRAY(
       JSON_OBJECT(
+        'name', 'lotdb-vue',
+        'stack', 'Vue 3 + Express + TypeScript + MySQL 8 + Apache IoTDB',
+        'background', '前后端分离的库存管理演示系统，强事务业务数据写入 MySQL，库存变动和销量趋势写入 Apache IoTDB，用于后台分析图表展示。项目不是纯方案骨架，而是可直接运行、可演示的最小闭环实现。',
+        'contributions', JSON_ARRAY(
+          '实现客户与管理员注册、登录、退出、地址管理、商品浏览、下单、模拟支付和订单查看，覆盖客户端完整购买路径。',
+          '建设管理端商品增删改查、上下架、图片上传、条形码查看、库存调整、库存预警、订单处理和 IoTDB 趋势分析能力。',
+          '后端补齐操作日志、CSV/Excel 导出、备份恢复、登录失败锁定、页面权限与接口权限控制，并在启动时自动补充演示数据、回填库存和销量记录到 IoTDB。'
+        ),
+        'result', '形成一个能跑通前台购买、后台管理、库存分析和数据回填的库存管理最小闭环，集中展示 Vue 全栈工程、关系型数据与时序数据协同建模能力。',
+        'url', 'https://github.com/wkylin/lotdb-vue'
+      ),
+      JSON_OBJECT(
         'name', '@w.ui/wui-react',
         'stack', 'React 19 + Ant Design 6 + TypeScript + Vite',
         'background', '基于 React 19 和 Ant Design 6 的高质量组件库，面向中后台、内容展示、动画交互和媒体可视化场景，沉淀 100+ 可复用业务组件，并通过 npm 面向不同 React 项目分发。',
