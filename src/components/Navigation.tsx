@@ -24,6 +24,10 @@ function getActiveSectionId() {
   const referenceY = navHeight + Math.min(180, window.innerHeight * 0.22);
   const bottomDistance = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
 
+  if (sections[0].getBoundingClientRect().top > referenceY) {
+    return "";
+  }
+
   if (bottomDistance < 96) {
     return sections[sections.length - 1].id;
   }
