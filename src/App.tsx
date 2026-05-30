@@ -23,7 +23,15 @@ function App() {
   return (
     <main className="relative overflow-x-clip bg-[#090d12] text-slate-100">
       <PageIntro />
-      <MagicTrail />
+      <MagicTrail
+        particleCount={30}
+        particleSize={[0.7, 2.2]}
+        particleSpeed={[0.5, 1.6]}
+        shadowBlur={8}
+        trailLength={18}
+        trailMaxWidth={2.35}
+        trailOpacity={0.42}
+      />
       <div className="site-curtain min-h-screen overflow-x-clip">
         <Navigation contacts={profile.contacts} />
         <HeroSection profile={profile} />
