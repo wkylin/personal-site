@@ -100,7 +100,9 @@
     gap: 0.85rem;
     color: rgb(248, 250, 252);
     transform-origin: center;
-    animation: page-intro-mark 1850ms cubic-bezier(0.76, 0, 0.24, 1) 180ms forwards;
+    animation: page-intro-mark 1850ms cubic-bezier(0.76, 0, 0.24, 1) 180ms both;
+    backface-visibility: hidden;
+    will-change: opacity, transform;
   }
 
   .page-intro-word {
@@ -118,7 +120,7 @@
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.9), rgba(248, 250, 252, 0.9), transparent);
     transform-origin: center;
-    animation: page-intro-line 1400ms cubic-bezier(0.22, 1, 0.36, 1) 260ms forwards;
+    animation: page-intro-line 1400ms cubic-bezier(0.22, 1, 0.36, 1) 260ms both;
   }
 
   .page-intro-label {
@@ -755,82 +757,5 @@
 
   .footer-flight-trail {
     opacity: 0.32;
-  }
-}
-
-@media (max-width: 640px) {
-  .site-curtain {
-    margin-bottom: var(--footer-reveal-height-mobile, 270px);
-  }
-
-  .site-reveal-footer {
-    min-height: var(--footer-reveal-height-mobile, 270px);
-  }
-
-  .footer-paper-plane {
-    left: -8.5rem;
-    bottom: 5.1rem;
-    width: clamp(8rem, 42vw, 11rem);
-    animation-name: footer-plane-fly-mobile;
-  }
-
-  .footer-flight-trail {
-    left: 0.75rem;
-    bottom: 7.25rem;
-    width: 52vw;
-    animation-name: footer-plane-trail-mobile;
-  }
-
-  .footer-flight-trail-two {
-    bottom: 6.55rem;
-    width: 40vw;
-  }
-}
-
-@keyframes footer-plane-fly-mobile {
-  0%,
-  12% {
-    opacity: 0;
-    transform: translate3d(0, 0.75rem, 0) rotate(-5deg) scale(0.48);
-  }
-
-  40% {
-    opacity: 1;
-    transform: translate3d(calc(50vw - 5.5rem), -0.45rem, 0) rotate(-7deg) scale(1);
-  }
-
-  54% {
-    opacity: 1;
-    transform: translate3d(calc(50vw - 5.5rem), -0.45rem, 0) rotate(-7deg) scale(1);
-  }
-
-  82%,
-  100% {
-    opacity: 0;
-    transform: translate3d(118vw, 0.1rem, 0) rotate(-8deg) scale(0.46);
-  }
-}
-
-@keyframes footer-plane-trail-mobile {
-  0%,
-  16% {
-    opacity: 0;
-    transform: translate3d(0, 0, 0) rotate(var(--trail-rotate, -7deg)) scaleX(0.25);
-  }
-
-  40% {
-    opacity: 0.6;
-    transform: translate3d(18vw, -0.28rem, 0) rotate(var(--trail-rotate, -7deg)) scaleX(0.95);
-  }
-
-  54% {
-    opacity: 0.34;
-    transform: translate3d(18vw, -0.28rem, 0) rotate(var(--trail-rotate, -7deg)) scaleX(0.7);
-  }
-
-  82%,
-  100% {
-    opacity: 0;
-    transform: translate3d(58vw, -0.52rem, 0) rotate(var(--trail-rotate, -7deg)) scaleX(0.2);
   }
 }
