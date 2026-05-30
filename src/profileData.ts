@@ -16,6 +16,7 @@ export type ProfileData = {
     juejin: string;
     demo: string;
     domain: string;
+    resume?: string;
   };
   metrics: Array<{ label: string; value: string; detail: string }>;
   advantages: Array<{ title: string; body: string }>;
@@ -33,6 +34,7 @@ export const profileData: ProfileData = {
     juejin: "https://juejin.cn/user/289926798641176",
     demo: "https://pro-react-admin.vercel.app/",
     domain: "wkylin.cn",
+    resume: "https://resume.github.io/?wkylin",
   },
   metrics: [
     { label: "架构经验", value: "长期一线", detail: "持续主导中大型前端与全栈系统架构设计" },
@@ -137,6 +139,17 @@ export const profileData: ProfileData = {
       ],
       result: "作为技术内容站持续输出架构、实践和实验成果。",
       url: "https://hacker.wkylin.cn",
+    },
+    {
+      name: "ng-funs",
+      stack: "AngularJS + GitHub Pages",
+      background: "早期 Angular 方向的前端实验项目，用于沉淀单页应用、组件组织和页面交互练习。",
+      contributions: [
+        "围绕 AngularJS 组织页面路由、视图结构和基础交互，验证早期 SPA 开发模式。",
+        "通过 GitHub Pages 承载在线演示，保留前端技术演进过程中的实践痕迹。",
+      ],
+      result: "作为老项目归档展示，补充个人前端技术路线和早期工程实践经历。",
+      url: "https://wkylin.github.io/ng-funs/home",
     },
   ],
   skills: [

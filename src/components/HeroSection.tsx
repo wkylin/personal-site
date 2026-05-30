@@ -5,6 +5,7 @@ import {
   BrainCircuit,
   Code2,
   Database,
+  ExternalLink,
   Globe2,
   Mail,
   Network,
@@ -19,6 +20,7 @@ type HeroSectionProps = {
 };
 
 export function HeroSection({ profile }: HeroSectionProps) {
+  const resumeUrl = profile.contacts.resume ?? "https://resume.github.io/?wkylin";
   const stack = useMemo(
     () => [
       { label: "前端架构治理", icon: Sparkles },
@@ -67,6 +69,15 @@ export function HeroSection({ profile }: HeroSectionProps) {
             >
               <Mail size={18} />
               邮件联系
+            </a>
+            <a
+              className="inline-flex items-center gap-2 rounded-none border border-cyan-300/45 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:-translate-y-px hover:bg-cyan-300/18"
+              href={resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <ExternalLink size={18} />
+              View Resume
             </a>
           </div>
         </div>
