@@ -153,6 +153,18 @@ export const profileData: ProfileData = {
       url: "https://hacker.wkylin.cn",
     },
     {
+      name: "tier-carousel-vue",
+      stack: "Vue 3 + TypeScript + Vite + GitHub Pages",
+      background: "从大型会员权益页面中抽离的 Vue 3 分层轮播演示项目，聚焦卡片层级切换、移动端触摸手势和可访问交互，方便独立验证复杂轮播组件的交互细节。",
+      contributions: [
+        "实现 click-to-select 层级选择、鼠标 pointer drag 和移动端 touch drag，让轮播在桌面端与触屏设备上都保持自然操作反馈。",
+        "处理横向轮播手势与页面纵向滚动的协同，避免移动端滑动时误锁页面滚动或打断轮播状态。",
+        "补齐 transition fallback 清理和原生 button 键盘支持，覆盖 Left/Right 等基础可访问性场景。",
+      ],
+      result: "形成一个可在线访问的 Vue 3 交互组件 demo，用于展示复杂 UI 动效、手势识别和可访问性处理能力。",
+      url: "https://wkylin.github.io/tier-carousel-vue/",
+    },
+    {
       name: "ng-funs",
       stack: "AngularJS + GitHub Pages",
       background: "早期 Angular 方向的前端实验项目，用于沉淀单页应用、组件组织和页面交互练习。",

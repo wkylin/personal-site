@@ -87,12 +87,12 @@ export function Navigation({ contacts }: NavigationProps) {
 
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-white/10 bg-slate-950/70 backdrop-blur-xl" aria-label="主导航">
-      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-center gap-2 px-4 py-2.5 sm:flex-nowrap sm:justify-between sm:px-6 sm:py-3 lg:px-8">
-        <a href="#hero" aria-label="WKylin 主页" className="flex shrink-0 items-center gap-2 text-sm font-semibold tracking-wide text-slate-100">
-          <img className="h-8 w-8 border border-cyan-300/50 bg-cyan-200/10" src="/site-icon.svg" alt="" aria-hidden="true" />
-          <span>{contacts.domain}</span>
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-1.5 px-3 py-2 sm:gap-2 sm:px-6 sm:py-3 lg:px-8">
+        <a href="#hero" aria-label="WKylin 主页" className="flex min-w-0 shrink items-center gap-1.5 text-xs font-semibold tracking-wide text-slate-100 sm:shrink-0 sm:gap-2 sm:text-sm">
+          <img className="h-7 w-7 shrink-0 border border-cyan-300/50 bg-cyan-200/10 sm:h-8 sm:w-8" src="/site-icon.svg" alt="" aria-hidden="true" />
+          <span className="truncate">{contacts.domain}</span>
         </a>
-        <div className="grid min-w-0 flex-1 basis-48 grid-cols-3 p-1 text-sm text-slate-300 sm:flex sm:w-auto sm:flex-none sm:basis-auto sm:items-center sm:gap-4 sm:border-0 sm:bg-transparent sm:p-0">
+        <div className="flex shrink-0 items-center justify-end gap-1 text-xs text-slate-300 sm:w-auto sm:flex-none sm:items-center sm:gap-4 sm:text-sm">
           {navItems.map((item) => {
             const isActive = activeId === item.id;
 
@@ -101,7 +101,7 @@ export function Navigation({ contacts }: NavigationProps) {
                 key={item.id}
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
-                className={`flex h-10 items-center justify-center border px-2 font-medium transition sm:h-auto sm:px-2.5 sm:py-1.5 ${
+                className={`flex h-8 min-w-10 items-center justify-center border px-1.5 font-medium transition sm:h-auto sm:min-w-0 sm:px-2.5 sm:py-1.5 ${
                   isActive
                     ? "border-cyan-300/45 bg-cyan-300/10 text-cyan-100 shadow-[0_0_18px_rgba(34,211,238,0.16)]"
                     : "border-transparent text-slate-300 hover:text-cyan-200"
