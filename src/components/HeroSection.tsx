@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { useMemo } from "react";
 import type { ProfileData } from "../profileData";
-import { SovereignCard } from "../components/SovereignCard";
+import SovereignCard from "../components/SovereignCard";
 
 type HeroSectionProps = {
   profile: ProfileData;
@@ -43,9 +43,9 @@ export function HeroSection({ profile }: HeroSectionProps) {
     >
       <div className="mx-auto grid w-full max-w-6xl lg:grid-cols-[1.06fr_0.94fr] lg:gap-8">
         <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(120deg,rgba(34,211,238,0.12),transparent_34%,rgba(250,204,21,0.11))]" />
-        <div className="relative z-10">
+        <div className="relative z-10 md:flex md:flex-col md:items-center md:text-center lg:items-start lg:text-left">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">Frontend Architecture OS</p>
-          <h1 className="mt-3 flex items-end gap-3 px-4 py-4 text-6xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">
+          <h1 className="mt-3 flex items-end justify-center gap-3 px-4 py-4 text-6xl font-black leading-[0.92] tracking-normal sm:text-7xl lg:justify-start lg:text-8xl">
             <span className="hero-wordmark" data-text="WKylin">WKylin</span>
             <BatteryCharging className="hero-charge-icon mb-2 h-[0.46em] w-[0.46em] text-cyan-200 sm:mb-3" strokeWidth={1.8} />
           </h1>
@@ -54,9 +54,9 @@ export function HeroSection({ profile }: HeroSectionProps) {
             多年一线前端与全栈研发经验，长期负责复杂业务系统的架构设计、工程治理和团队技术建设。擅长把大型应用拆成清晰边界、把重复交付沉淀为平台能力、把性能稳定性纳入日常研发流程。关注的不只是页面实现，更是架构演进、质量体系、研发效能和业务长期可维护性。
           </p>
 
-          <div className="mt-7 flex flex-wrap gap-3">
+          <div className="mt-7 flex w-full flex-wrap justify-center gap-3 md:flex-nowrap lg:justify-start">
             <a
-              className="inline-flex items-center gap-2 rounded-none border border-amber-300/70 bg-amber-300 px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:-translate-y-px hover:bg-amber-200"
+              className="inline-flex shrink-0 items-center gap-2 rounded-none border border-amber-300/70 bg-amber-300 px-3.5 py-2 text-sm font-semibold text-slate-950 transition hover:-translate-y-px hover:bg-amber-200"
               href={profile.contacts.github}
               target="_blank"
               rel="noreferrer"
@@ -65,14 +65,14 @@ export function HeroSection({ profile }: HeroSectionProps) {
               GitHub
             </a>
             <a
-              className="inline-flex items-center gap-2 rounded-none border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-white/10"
+              className="inline-flex shrink-0 items-center gap-2 rounded-none border border-white/20 bg-white/5 px-2 py-2 text-sm font-semibold text-slate-100 transition hover:bg-white/10"
               href="#contact"
             >
               <Mail size={18} />
               邮件联系
             </a>
             <a
-              className="inline-flex items-center gap-2 rounded-none border border-cyan-300/45 bg-cyan-300/10 px-4 py-2.5 text-sm font-semibold text-cyan-100 transition hover:-translate-y-px hover:bg-cyan-300/18"
+              className="inline-flex shrink-0 items-center gap-2 rounded-none border border-cyan-300/45 bg-cyan-300/10 px-3.5 py-2 text-sm font-semibold text-cyan-100 transition hover:-translate-y-px hover:bg-cyan-300/18"
               href={resumeUrl}
               target="_blank"
               rel="noreferrer"
@@ -84,7 +84,7 @@ export function HeroSection({ profile }: HeroSectionProps) {
           
         </div>
 
-        <aside className="relative z-10 mt-6 space-y-3 lg:mt-0" aria-label="个人信息摘要">
+        <aside className="relative z-10 mt-6 min-w-0 space-y-3 lg:mt-0" aria-label="个人信息摘要">
           {/* <div className="brand-prism-panel rounded-none border border-white/20 bg-slate-900/85 px-4 py-5 text-slate-100 shadow-[0_14px_30px_rgba(15,23,42,0.3)] sm:px-6 sm:py-6">
             <p className="relative z-10 text-center text-[clamp(1.8rem,8vw,2.6rem)] font-black leading-tight tracking-[0.06em]">前端市界</p>
             <p className="relative z-10 mt-2 text-center text-xs font-semibold tracking-[0.22em] text-slate-300">FRONTEND EDITION</p>
@@ -92,10 +92,10 @@ export function HeroSection({ profile }: HeroSectionProps) {
               以架构视角沉淀技术战略、工程体系与团队交付方法
             </p>
           </div> */}
-          <section className="flex items-center justify-center pb-4 px-6" aria-label="个人信息摘要">
-            <SovereignCard/>
+          <section className="flex min-w-0 items-center justify-center overflow-visible pb-4" aria-label="个人信息摘要">
+            <SovereignCard />
           </section>
-          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
             {stack.map((item) => {
               const Icon = item.icon;
               return (

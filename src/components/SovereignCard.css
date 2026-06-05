@@ -1,49 +1,59 @@
-/* 响应式缩放包装层 */
-.card-wrapper {
-  width: 100%;
-  max-width: 520px;
+.fsc-card-frame {
+  width: min(100%, 520px);
+  aspect-ratio: 520 / 310;
+  container-type: inline-size;
+  perspective: 1600px;
+  contain: layout style;
+  overflow: visible;
+}
+
+.fsc-card-container {
+  --fsc-hover-scale: 1;
+  --fsc-mouse-x: 30%;
+  --fsc-mouse-y: 20%;
+  --fsc-rotate-x: 0deg;
+  --fsc-rotate-y: 0deg;
+
   position: relative;
-}
-
-/* 3D 悬浮容器 */
-.card-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 520px;
-  height: 310px;
-  transform-origin: top left;
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-  transform-style: preserve-3d;
-  cursor: pointer;
-  perspective: 2000px;
-}
-
-/* 晶圆主权卡盘 */
-.card {
-  position: absolute;
   width: 100%;
   height: 100%;
-  background: #090a0d;
-  border-radius: 24px;
-  padding: 34px;
+  cursor: pointer;
+  transform:
+    rotateX(var(--fsc-rotate-x))
+    rotateY(var(--fsc-rotate-y))
+    scale(var(--fsc-hover-scale));
+  transform-style: preserve-3d;
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.fsc-card {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(20px, 6.54%, 34px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 24px;
+  background: #090a0d;
   box-shadow:
     0 60px 130px rgba(0, 0, 0, 0.95),
     inset 0 1px 2px rgba(255, 255, 255, 0.08);
-  overflow: hidden;
-  border: 1px solid rgba(212, 175, 55, 0.15);
-  transform: translateZ(60px);
+  transform: translateZ(44px);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+  backface-visibility: hidden;
 }
 
-/* 3D 霓虹黄金边框动效 */
-.card::before {
+.fsc-card::before {
   content: "";
   position: absolute;
   top: -50%;
   left: -50%;
+  z-index: -2;
   width: 200%;
   height: 200%;
   background: conic-gradient(
@@ -53,219 +63,306 @@
     rgba(212, 175, 55, 0.5) 55%,
     transparent 85%
   );
-  animation: quantumRotate 10s linear infinite;
-  z-index: -2;
+  animation: fsc-quantum-rotate 10s linear infinite;
+  will-change: transform;
 }
 
-/* 内层面板衬底 */
-.card-shield {
-  position: absolute;
-  inset: 3px;
-  background: radial-gradient(
-    circle at var(--mouse-x, 30%) var(--mouse-y, 20%),
-    #111318 0%,
-    #060709 100%
-  );
-  border-radius: 22px;
-  z-index: -1;
-}
-
-/* 随动物理反光层 */
-.glare {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(255, 255, 255, 0.08) 0%,
-    transparent 45%
-  );
-  z-index: 5;
-  pointer-events: none;
-  border-radius: 24px;
-}
-
-/* 背景：科幻网格与电路管道 */
-.asset-pipeline {
-  position: absolute;
-  inset: 0;
-  opacity: 0.25;
-  z-index: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
-
-.card-container:hover .asset-pipeline {
-  opacity: 0.6;
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 2;
-}
-
-.brand-name {
-  color: #ffffff;
-  font-size: 34px;
-  font-weight: 900;
-  letter-spacing: 4px;
-  background: linear-gradient(135deg, #ffffff 30%, #ffd700 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
-}
-
-.badge {
-  background: linear-gradient(
-    135deg,
-    rgba(212, 175, 55, 0.15) 0%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  color: #ffd700;
-  font-size: 9px;
-  padding: 5px 14px;
-  border-radius: 6px;
-  letter-spacing: 2px;
-  font-weight: 800;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  text-transform: uppercase;
-}
-
-.card-body {
-  margin-top: 15px;
-  z-index: 2;
-}
-
-.future-title {
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-  background: linear-gradient(90deg, #ffffff, #d4af37);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.manifesto-capsule {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-left: 3px solid #d4af37;
-  border-radius: 8px;
-  padding: 12px 16px;
-  backdrop-filter: blur(5px);
-  box-shadow:
-    inset 0 1px 10px rgba(255, 255, 255, 0.01),
-    0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.manifesto {
-  color: #94a3b8;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  line-height: 1.6;
-  font-weight: 500;
-  background: linear-gradient(90deg, #94a3b8 0%, #ffffff 50%, #94a3b8 100%);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: textShine 6s linear infinite;
-}
-
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding-top: 16px;
-  z-index: 2;
-}
-
-.asset-hubs {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.hub-link {
-  color: #94a3b8;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.hub-link:hover {
-  color: #ffd700;
-  transform: translateX(4px);
-}
-
-.hub-link .label {
-  color: #d4af37;
-  font-weight: 800;
-  width: 28px;
-  font-size: 10px;
-  letter-spacing: 0.5px;
-}
-
-/* 右下角 AI 智能矩阵核心 */
-.ai-core {
-  width: 52px;
-  height: 52px;
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  border-radius: 12px;
-  position: relative;
-  background: radial-gradient(circle, #1a160d 0%, #030406 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-  transition: all 0.3s;
-}
-
-.card-container:hover .ai-core {
-  border-color: #ffd700;
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-}
-
-.ai-core::before {
-  content: "AI";
-  font-size: 13px;
-  font-weight: 900;
-  color: #ffd700;
-  letter-spacing: 1px;
-  z-index: 2;
-  filter: drop-shadow(0 0 6px #ffd700);
-}
-
-.ai-core::after {
-  content: "";
-  position: absolute;
-  inset: 5px;
-  border: 1px dashed rgba(212, 175, 55, 0.4);
-  border-radius: 8px;
-  animation: quantumRotate 15s linear infinite;
-}
-
-.card-container:hover .card {
+.fsc-card-container:hover .fsc-card {
   border-color: rgba(212, 175, 55, 0.5);
   box-shadow:
     0 70px 140px rgba(0, 0, 0, 0.95),
     0 0 60px rgba(212, 175, 55, 0.3);
 }
 
-@keyframes quantumRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+.fsc-card-shield {
+  position: absolute;
+  inset: 3px;
+  z-index: -1;
+  border-radius: 22px;
+  background: radial-gradient(
+    circle at var(--fsc-mouse-x) var(--fsc-mouse-y),
+    #111318 0%,
+    #060709 100%
+  );
 }
 
-@keyframes textShine {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+.fsc-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border-radius: 24px;
+  background: radial-gradient(
+    circle at var(--fsc-mouse-x) var(--fsc-mouse-y),
+    rgba(255, 255, 255, 0.08) 0%,
+    transparent 45%
+  );
+  pointer-events: none;
+}
+
+.fsc-asset-pipeline {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.25;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+.fsc-card-container:hover .fsc-asset-pipeline {
+  opacity: 0.6;
+}
+
+.fsc-card-header,
+.fsc-card-body,
+.fsc-card-footer {
+  position: relative;
+  z-index: 2;
+}
+
+.fsc-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(8px, 3cqw, 16px);
+  min-width: 0;
+}
+
+.fsc-brand-name {
+  min-width: 0;
+  flex: 1 1 auto;
+  color: #ffffff;
+  font-size: clamp(22px, 6.54cqw, 34px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: clamp(2px, 0.77cqw, 4px);
+  background: linear-gradient(135deg, #ffffff 30%, #ffd700 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+  -webkit-text-fill-color: transparent;
+}
+
+.fsc-badge {
+  flex: 0 1 auto;
+  min-width: 0;
+  padding: 5px clamp(8px, 2.69cqw, 14px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 6px;
+  color: #ffd700;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  font-size: clamp(7px, 1.73cqw, 9px);
+  font-weight: 800;
+  letter-spacing: clamp(1px, 0.38cqw, 2px);
+  line-height: 1.35;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fsc-card-body {
+  margin-top: 15px;
+  min-width: 0;
+}
+
+.fsc-future-title {
+  display: block;
+  max-width: 100%;
+  margin-bottom: 12px;
+  overflow: hidden;
+  color: #ffffff;
+  background: linear-gradient(90deg, #ffffff, #d4af37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: clamp(11px, 2.88cqw, 15px);
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-text-fill-color: transparent;
+}
+
+.fsc-manifesto-capsule {
+  min-width: 0;
+  padding: clamp(9px, 2.31cqw, 12px) clamp(10px, 3.08cqw, 16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #d4af37;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow:
+    inset 0 1px 10px rgba(255, 255, 255, 0.01),
+    0 10px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+.fsc-manifesto {
+  display: block;
+  max-width: 100%;
+  color: #94a3b8;
+  background: linear-gradient(90deg, #94a3b8 0%, #ffffff 50%, #94a3b8 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: clamp(8px, 2.31cqw, 12px);
+  font-weight: 500;
+  letter-spacing: clamp(0.2px, 0.29cqw, 1.5px);
+  line-height: 1.6;
+  white-space: nowrap;
+  animation: fsc-text-shine 6s linear infinite;
+  -webkit-text-fill-color: transparent;
+}
+
+.fsc-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fsc-asset-hubs {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fsc-hub-link {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  color: #94a3b8;
+  font-size: clamp(10px, 2.31cqw, 12px);
+  line-height: 1.25;
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.fsc-hub-link:hover {
+  color: #ffd700;
+  transform: translateX(4px);
+}
+
+.fsc-label {
+  width: 28px;
+  flex: 0 0 auto;
+  color: #d4af37;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.fsc-ai-core {
+  position: relative;
+  display: grid;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  place-items: center;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  background: radial-gradient(circle, #1a160d 0%, #030406 100%);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.fsc-card-container:hover .fsc-ai-core {
+  border-color: #ffd700;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.fsc-ai-core::before {
+  content: "AI";
+  z-index: 2;
+  color: #ffd700;
+  filter: drop-shadow(0 0 6px #ffd700);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.fsc-ai-core::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px dashed rgba(212, 175, 55, 0.4);
+  border-radius: 8px;
+  animation: fsc-quantum-rotate 15s linear infinite;
+}
+
+@container (max-width: 420px) {
+  .fsc-card {
+    border-radius: 20px;
+  }
+
+  .fsc-card-shield {
+    border-radius: 18px;
+  }
+
+  .fsc-glare {
+    border-radius: 20px;
+  }
+
+  .fsc-card-header {
+    align-items: flex-start;
+  }
+
+  .fsc-badge {
+    max-width: none;
+    padding-inline: 7px;
+    font-size: clamp(6px, 1.9cqw, 8px);
+    letter-spacing: clamp(0.6px, 0.32cqw, 1.2px);
+    white-space: nowrap;
+  }
+
+  .fsc-card-footer {
+    gap: 10px;
+  }
+
+  .fsc-ai-core {
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
+  }
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .fsc-card-container {
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .fsc-card {
+    transform: translateZ(0);
+  }
+
+  .fsc-card::before,
+  .fsc-ai-core::after,
+  .fsc-manifesto {
+    animation: none;
+  }
+}
+
+@keyframes fsc-quantum-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fsc-text-shine {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
 }
