@@ -14,6 +14,7 @@ import { useRevealMotion } from "./hooks/useRevealMotion";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
 
+
 function App() {
   const profile = useProfile();
 
@@ -35,11 +36,9 @@ function App() {
       <div className="site-curtain min-h-screen overflow-x-clip">
         <Navigation contacts={profile.contacts} />
         <HeroSection profile={profile} />
-
         <div className="mx-auto w-full max-w-6xl px-4 pb-4 pt-6 sm:px-6 lg:px-8">
           <MetricsSection metrics={profile.metrics} />
           <AdvantagesSection advantages={profile.advantages} />
-          
           <ProjectsSection projects={profile.projects} />
           <SkillsSection skills={profile.skills} />
           <InfluenceSection contacts={profile.contacts} influence={profile.influence} />
