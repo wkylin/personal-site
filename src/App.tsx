@@ -12,14 +12,21 @@ import { SkillsSection } from "./components/SkillsSection";
 import { useProfile } from "./hooks/useProfile";
 import { useRevealMotion } from "./hooks/useRevealMotion";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
+import ReactGA from 'react-ga4';
+import { useEffect } from "react";
 
-
+const GA_MEASUREMENT_ID = "G-Y0T0V9X7J7";
+ReactGA.initialize(GA_MEASUREMENT_ID);
 
 function App() {
   const profile = useProfile();
 
   useSmoothScroll();
   useRevealMotion([profile.projects]);
+
+  useEffect(() => {
+    ReactGA.send({ hitType: "pageview", page: window.location.pathname });
+  }, []);
 
   return (
     <main className="relative overflow-x-clip bg-[#090d12] text-slate-100">
