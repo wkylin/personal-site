@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">visual.wkylin.cn preview</title>
+  <desc id="desc">Data visualization dashboard preview.</desc>
+  <rect width="1200" height="800" rx="46" fill="#101827"/>
+  <rect x="70" y="64" width="1060" height="672" rx="36" fill="#f8fafc"/>
+  <rect x="112" y="116" width="326" height="266" rx="26" fill="#e0f2fe"/>
+  <rect x="480" y="116" width="608" height="266" rx="26" fill="#ecfeff"/>
+  <rect x="112" y="426" width="476" height="258" rx="26" fill="#f1f5f9"/>
+  <rect x="630" y="426" width="458" height="258" rx="26" fill="#fefce8"/>
+  <circle cx="276" cy="250" r="92" fill="none" stroke="#0ea5e9" stroke-width="34"/>
+  <path d="M276 158a92 92 0 0192 92" fill="none" stroke="#f59e0b" stroke-width="34" stroke-linecap="round"/>
+  <polyline points="532,318 622,250 706,286 792,184 876,224 1018,158" fill="none" stroke="#10b981" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#38bdf8">
+    <rect x="168" y="580" width="42" height="70" rx="12"/>
+    <rect x="242" y="524" width="42" height="126" rx="12"/>
+    <rect x="316" y="550" width="42" height="100" rx="12"/>
+    <rect x="390" y="486" width="42" height="164" rx="12"/>
+    <rect x="464" y="610" width="42" height="40" rx="12"/>
+  </g>
+  <path d="M700 602c52-126 178-126 232-24 30 56 68 58 108 12" fill="none" stroke="#f97316" stroke-width="14" stroke-linecap="round"/>
+</svg>

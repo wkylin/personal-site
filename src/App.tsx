@@ -15,6 +15,11 @@ import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import ReactGA from 'react-ga4';
 import { useEffect } from "react";
 
+import {
+  TasteSkillTrueMatrixStream
+  
+} from "./components/TasteSkillTrueMatrixStream";
+
 const GA_MEASUREMENT_ID = "G-Y0T0V9X7J7";
 ReactGA.initialize(GA_MEASUREMENT_ID);
 
@@ -40,9 +45,11 @@ function App() {
         trailMaxWidth={2.35}
         trailOpacity={0.42}
       />
+      
       <div className="site-curtain min-h-screen overflow-x-clip">
         <Navigation contacts={profile.contacts} />
         <HeroSection profile={profile} />
+        
         <div className="mx-auto w-full max-w-6xl px-4 pb-4 pt-6 sm:px-6 lg:px-8">
           <MetricsSection metrics={profile.metrics} />
           <AdvantagesSection advantages={profile.advantages} />
@@ -51,8 +58,8 @@ function App() {
           <InfluenceSection contacts={profile.contacts} influence={profile.influence} />
           <ContactSection />
         </div>
+        <TasteSkillTrueMatrixStream />
       </div>
-
       <SiteFooter />
     </main>
   );

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">lotdb-vue dashboard preview</title>
+  <desc id="desc">Inventory dashboard interface preview for lotdb-vue.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#0f172a"/>
+      <stop offset=".55" stop-color="#12313c"/>
+      <stop offset="1" stop-color="#172018"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" x2="1">
+      <stop stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" rx="46" fill="url(#bg)"/>
+  <rect x="54" y="58" width="1092" height="684" rx="30" fill="#020617" opacity=".64" stroke="#ffffff" stroke-opacity=".12"/>
+  <rect x="54" y="58" width="220" height="684" rx="30" fill="#08111f"/>
+  <circle cx="104" cy="114" r="18" fill="#22d3ee"/>
+  <rect x="138" y="100" width="82" height="12" rx="6" fill="#e2e8f0"/>
+  <rect x="138" y="124" width="54" height="9" rx="4.5" fill="#64748b"/>
+  <g fill="#334155">
+    <rect x="92" y="190" width="124" height="16" rx="8"/>
+    <rect x="92" y="242" width="142" height="16" rx="8"/>
+    <rect x="92" y="294" width="104" height="16" rx="8"/>
+    <rect x="92" y="346" width="132" height="16" rx="8"/>
+  </g>
+  <rect x="324" y="104" width="280" height="126" rx="22" fill="#0f766e" opacity=".28" stroke="#2dd4bf" stroke-opacity=".5"/>
+  <rect x="638" y="104" width="204" height="126" rx="22" fill="#1d4ed8" opacity=".22" stroke="#60a5fa" stroke-opacity=".45"/>
+  <rect x="876" y="104" width="204" height="126" rx="22" fill="#ca8a04" opacity=".2" stroke="#facc15" stroke-opacity=".45"/>
+  <rect x="352" y="134" width="94" height="14" rx="7" fill="#a7f3d0"/>
+  <rect x="352" y="166" width="178" height="36" rx="18" fill="#ecfeff"/>
+  <rect x="670" y="134" width="84" height="14" rx="7" fill="#bfdbfe"/>
+  <rect x="670" y="166" width="112" height="36" rx="18" fill="#dbeafe"/>
+  <rect x="908" y="134" width="92" height="14" rx="7" fill="#fde68a"/>
+  <rect x="908" y="166" width="120" height="36" rx="18" fill="#fef3c7"/>
+  <rect x="324" y="276" width="756" height="300" rx="28" fill="#08111f" stroke="#ffffff" stroke-opacity=".1"/>
+  <polyline points="376,510 458,448 538,470 618,364 698,400 778,322 858,354 1000,292" fill="none" stroke="url(#cyan)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#1e293b">
+    <rect x="352" y="620" width="676" height="18" rx="9"/>
+    <rect x="352" y="660" width="540" height="18" rx="9"/>
+  </g>
+</svg>
