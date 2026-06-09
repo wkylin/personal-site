@@ -19,6 +19,7 @@ type MatrixStreamPath = {
   scale: number[];
   rotateX: number[];
   rotateY: number[];
+  rotateZ: number[];
   opacity: number[];
   zIndex: number[];
   blur: number[];
@@ -60,17 +61,22 @@ export type TasteSkillTrueMatrixStreamProps = {
 
 // 每张卡都走同一条轨迹：上方进入 -> 下落居中 -> 横向移出 -> 上方重置
 const DEFAULT_CARD_PATH: MatrixStreamPath = {
-  x: ['-62%', '-62%', '-57%', '-43%', '-26%', '4%', '44%', '102%', '206%', '-62%'],
-  y: ['-265%', '-225%', '-162%', '-78%', '-12%', '30%', '42%', '70%', '86%', '-265%'],
-  z: [-1020, -860, -430, -160, -10, 120, -180, -520, -920, -1020],
-  scale: [0.3, 0.34, 0.44, 0.6, 0.74, 0.84, 0.76, 0.62, 0.4, 0.3],
-  rotateX: [4.0, 3.7, 3.1, 2.6, 2.2, 2.0, 2.2, 2.7, 3.5, 4.0],
-  rotateY: [-3.0, -2.7, -2.0, -1.2, -0.3, 0.2, 0.8, 1.6, 2.6, -3.0],
-  opacity: [0, 0, 0.18, 0.42, 0.66, 0.88, 0.42, 0.16, 0, 0],
-  zIndex: [12, 12, 16, 30, 50, 64, 8, 4, 2, 2],
-  blur: [10, 8, 5, 2, 0, 0, 2, 6, 10, 10],
-  times: [0, 0.09, 0.2, 0.33, 0.46, 0.58, 0.68, 0.79, 0.92, 1],
+  x: ['-76%', '-68%', '-54%', '-36%', '-16%', '6%', '34%', '78%', '136%', '202%', '-76%'],
+  y: ['-255%', '-212%', '-150%', '-72%', '-6%', '30%', '50%', '72%', '88%', '96%', '-255%'],
+  z: [-1180, -980, -620, -260, -40, 170, -120, -480, -840, -1120, -1180],
+  scale: [0.26, 0.32, 0.43, 0.58, 0.74, 0.88, 0.78, 0.62, 0.46, 0.3, 0.26],
+  rotateX: [5.4, 4.8, 3.8, 2.8, 2.1, 1.4, 2.0, 2.9, 4.0, 5.0, 5.4],
+  rotateY: [-4.4, -3.7, -2.5, -1.2, -0.2, 0.4, 1.1, 2.4, 3.8, 4.8, -4.4],
+  rotateZ: [-2.8, -2.2, -1.5, -0.8, -0.2, 0.3, 0.9, 1.8, 2.6, 3.2, -2.8],
+  opacity: [0, 0.05, 0.18, 0.42, 0.7, 0.92, 0.46, 0.2, 0.06, 0, 0],
+  zIndex: [6, 8, 14, 28, 50, 72, 12, 6, 4, 2, 2],
+  blur: [12, 9, 5, 2, 0, 0, 2, 6, 9, 12, 12],
+  times: [0, 0.08, 0.18, 0.31, 0.44, 0.56, 0.66, 0.76, 0.88, 0.96, 1],
 };
+
+const OVERLAY_OPACITY_PATH = [0, 0, 0.08, 0.2, 0.42, 0.76, 0.52, 0.28, 0.08, 0, 0];
+const BADGE_OPACITY_PATH = [0, 0, 0.12, 0.28, 0.58, 1, 0.66, 0.32, 0.08, 0, 0];
+const BADGE_Y_PATH = [-12, -12, -9, -6, -2, 0, -2, -5, -9, -12, -12];
 
 const DEFAULT_IMAGES: MatrixStreamImage[] = [
   { src: "/images/projects/lotdb-vue.svg", alt: "lotdb-vue 库存管理系统效果图", label: "lotdb-vue" },
@@ -110,6 +116,12 @@ const reversePercent = (value: string) => {
   return `${Number(match[1]) * -1}%`;
 };
 
+const offsetPercent = (value: string, offset: number) => {
+  const match = value.match(/^(-?\d+(?:\.\d+)?)%$/);
+  if (!match) return value;
+  return `${Number(match[1]) + offset}%`;
+};
+
 const normalizeImage = (image: MatrixStreamImage, index: number) => {
   if (typeof image === 'string') {
     return {
@@ -137,6 +149,19 @@ const makePath = (direction: MatrixStreamDirection, path?: Partial<MatrixStreamP
   };
 };
 
+const makeSlotPath = (path: MatrixStreamPath, slotIdx: number): MatrixStreamPath => {
+  const lane = (slotIdx % 3) - 1;
+  const depthLane = slotIdx % 2 === 0 ? 1 : -1;
+
+  return {
+    ...path,
+    x: path.x.map((value) => offsetPercent(value, lane * 4)),
+    y: path.y.map((value) => offsetPercent(value, depthLane * 3)),
+    z: path.z.map((value, index) => value - Math.abs(lane) * 70 + (index < 3 ? depthLane * 35 : 0)),
+    rotateZ: path.rotateZ.map((value) => value + lane * 1.1),
+  };
+};
+
 const clampSlotCount = (imageCount: number, minCardSlots: number, maxCardSlots: number) => {
   if (imageCount <= 0) return 0;
   return Math.min(Math.max(imageCount, minCardSlots), maxCardSlots);
@@ -159,6 +184,9 @@ type MatrixStreamCardProps = {
   slotIdx: number;
   images: ReturnType<typeof normalizeImage>[];
   path: MatrixStreamPath;
+  overlayOpacity: number[];
+  badgeOpacity: number[];
+  badgeY: number[];
   transition: Transition;
   duration: number;
   slotCount: number;
@@ -173,6 +201,9 @@ const MatrixStreamCard: React.FC<MatrixStreamCardProps> = ({
   slotIdx,
   images,
   path,
+  overlayOpacity,
+  badgeOpacity,
+  badgeY,
   transition,
   duration,
   slotCount,
@@ -238,7 +269,7 @@ const MatrixStreamCard: React.FC<MatrixStreamCardProps> = ({
 
         <motion.div
           className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent"
-          animate={{ opacity: [0, 0, 0.08, 0.28, 0.5, 0.9, 0.74, 0.42, 0, 0] }}
+          animate={{ opacity: overlayOpacity }}
           transition={transition}
         />
 
@@ -246,8 +277,8 @@ const MatrixStreamCard: React.FC<MatrixStreamCardProps> = ({
           <motion.div
             className="absolute top-4 left-4 flex items-center space-x-2 rounded-full bg-white/90 px-3 py-1 shadow-sm backdrop-blur"
             animate={{
-              opacity: [0, 0, 0.1, 0.24, 0.48, 1, 0.72, 0.36, 0, 0],
-              y: [-10, -10, -8, -6, -3, 0, -1, -4, -8, -10],
+              opacity: badgeOpacity,
+              y: badgeY,
             }}
             transition={transition}
           >
@@ -354,16 +385,20 @@ export const TasteSkillTrueMatrixStream: React.FC<TasteSkillTrueMatrixStreamProp
           }}
           className="relative h-100 min-h-100 w-full overflow-visible"
         >
-          {Array.from({ length: slotCount }).map((_, cardIdx) => {
-            const cardTransition = makeCardLoopTransition(cardIdx, loopDuration, cardStagger, resolvedPath.times);
-            return (
-              <MatrixStreamCard
-                key={cardIdx}
-                slotIdx={cardIdx}
-                images={streamImages}
-                path={resolvedPath}
-                transition={cardTransition}
-                duration={loopDuration}
+        {Array.from({ length: slotCount }).map((_, cardIdx) => {
+          const cardTransition = makeCardLoopTransition(cardIdx, loopDuration, cardStagger, resolvedPath.times);
+          const slotPath = makeSlotPath(resolvedPath, cardIdx);
+          return (
+            <MatrixStreamCard
+              key={cardIdx}
+              slotIdx={cardIdx}
+              images={streamImages}
+              path={slotPath}
+              overlayOpacity={OVERLAY_OPACITY_PATH}
+              badgeOpacity={BADGE_OPACITY_PATH}
+              badgeY={BADGE_Y_PATH}
+              transition={cardTransition}
+              duration={loopDuration}
                 slotCount={slotCount}
                 cardLayout={resolvedCardLayout}
                 cardClassName={cardClassName}
