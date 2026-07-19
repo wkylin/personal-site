@@ -9,6 +9,7 @@ import { PageIntro } from "./components/PageIntro";
 import { ProjectsSection } from "./components/ProjectsSection";
 import { SiteFooter } from "./components/SiteFooter";
 import { SkillsSection } from "./components/SkillsSection";
+// import { ScrollSyncShowcase } from "./components/scrollSync/ScrollSyncShowcase";
 import { useProfile } from "./hooks/useProfile";
 import { useRevealMotion } from "./hooks/useRevealMotion";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
@@ -49,7 +50,7 @@ function App() {
       <div className="site-curtain min-h-screen overflow-x-clip">
         <Navigation contacts={profile.contacts} />
         <HeroSection profile={profile} />
-        
+        {/* <ScrollSyncShowcase /> */}
         <div className="mx-auto w-full max-w-6xl px-4 pb-4 pt-6 sm:px-6 lg:px-8">
           <MetricsSection metrics={profile.metrics} />
           <AdvantagesSection advantages={profile.advantages} />
