@@ -28,6 +28,20 @@ VALUES (
     ),
     'projects', JSON_ARRAY(
       JSON_OBJECT(
+        'name', 'ws-delta',
+        'stack', 'Vue 3 + TypeScript + WebSocket + Koa + Redis / Kafka',
+        'background', '面向高频数据更新场景的 WebSocket 实时看板与网关示例，以赛事数据流为载体，完整演示从订阅、快照初始化、增量合并到异常恢复和运行监控的实时通信链路。',
+        'contributions', JSON_ARRAY(
+          '拆分 topic_snapshot、topic_delta 与 outcome_delta：首次订阅建立基线，高频数值变化只更新目标字段，避免反复传输和替换整份赛事列表，降低消息体积与前端渲染开销。',
+          '使用 eventId 索引和复合 outcome key 将高频增量定位由列表线性扫描改为 Map 查找，并以 2,000 场赛事、每场 12 个 outcome 的固定基准持续验证索引收益与结果一致性。',
+          '根据已加载及可见赛事动态收窄订阅范围，在发送前合并同一实体的中间变化；结合缓冲区高水位丢弃可恢复增量、背压通知和慢客户端断开，防止消费速度拖垮网关。',
+          '以 streamId + seq 校验消息顺序，发现乱序或缺口时停止应用增量并自动请求新快照；配套 Prometheus 指标、协议单测、WebSocket 集成测试及 Redis / Kafka 多实例广播能力。'
+        ),
+        'result', '形成一套可运行、可压测、可观测的 WebSocket 性能优化范例，覆盖传输减量、O(1) 增量定位、渲染降载、背压保护、断线恢复与横向扩展等关键工程问题。',
+        'url', 'https://ws.wkylin.cn/',
+        'githubUrl', 'https://github.com/wkylin/ws-delta'
+      ),
+      JSON_OBJECT(
         'name', 'lotdb-vue',
         'stack', 'Vue 3 + Express + TypeScript + MySQL 8 + Apache IoTDB',
         'background', '前后端分离的库存管理演示系统，强事务业务数据写入 MySQL，库存变动和销量趋势写入 Apache IoTDB，用于后台分析图表展示。项目不是纯方案骨架，而是可直接运行、可演示的最小闭环实现。',

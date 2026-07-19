@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, GitFork } from "lucide-react";
 import type { CSSProperties } from "react";
 import type { ProfileData } from "../profileData";
 
@@ -29,15 +29,28 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2">
                     <h3 className="text-xl font-semibold sm:text-2xl">{project.name}</h3>
-                    <a
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-200 transition hover:text-cyan-100"
-                      href={project.url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      访问项目
-                      <ArrowUpRight size={16} />
-                    </a>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                      <a
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-cyan-200 transition hover:text-cyan-100"
+                        href={project.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {project.githubUrl ? "在线体验" : "访问项目"}
+                        <ArrowUpRight size={16} />
+                      </a>
+                      {project.githubUrl ? (
+                        <a
+                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-300 transition hover:text-white"
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <GitFork size={16} />
+                          GitHub
+                        </a>
+                      ) : null}
+                    </div>
                   </div>
                   <span className="text-xs text-slate-400 sm:text-sm">{project.stack}</span>
                 </div>
