@@ -6,6 +6,10 @@ type ProjectsSectionProps = {
   projects: ProfileData["projects"];
 };
 
+function isGitHubUrl(url: string) {
+  return url.startsWith("https://github.com/");
+}
+
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <section id="projects" className="mt-8">
@@ -36,8 +40,17 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        {project.githubUrl ? "在线体验" : "访问项目"}
-                        <ArrowUpRight size={16} />
+                        {isGitHubUrl(project.url) ? (
+                          <>
+                            <GitFork size={16} />
+                            GitHub
+                          </>
+                        ) : (
+                          <>
+                            {project.githubUrl ? "在线体验" : "访问项目"}
+                            <ArrowUpRight size={16} />
+                          </>
+                        )}
                       </a>
                       {project.githubUrl ? (
                         <a

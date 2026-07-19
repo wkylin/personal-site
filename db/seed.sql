@@ -51,7 +51,8 @@ VALUES (
           '后端补齐操作日志、CSV/Excel 导出、备份恢复、登录失败锁定、页面权限与接口权限控制，并在启动时自动补充演示数据、回填库存和销量记录到 IoTDB。'
         ),
         'result', '形成一个能跑通前台购买、后台管理、库存分析和数据回填的库存管理最小闭环，集中展示 Vue 全栈工程、关系型数据与时序数据协同建模能力。',
-        'url', 'https://github.com/wkylin/lotdb-vue'
+        'url', 'https://lotdb.wkylin.cn/',
+        'githubUrl', 'https://github.com/wkylin/lotdb-vue'
       ),
       JSON_OBJECT(
         'name', '@w.ui/wui-react',
@@ -74,7 +75,8 @@ VALUES (
           '通过响应式布局和暗色科技风设计，提升个人品牌的辨识度。'
         ),
         'result', '作为个人主站承载履历、项目和跳转入口，形成统一展示面。',
-        'url', 'https://wkylin.cn'
+        'url', 'https://wkylin.cn',
+        'githubUrl', 'https://github.com/wkylin/personal-site'
       ),
       JSON_OBJECT(
         'name', 'games.wkylin.cn',
@@ -85,7 +87,8 @@ VALUES (
           '沉淀可复用的动效与交互能力，适配不同屏幕尺寸。'
         ),
         'result', '作为小游戏展示站持续承载可玩性与互动演示。',
-        'url', 'https://games.wkylin.cn'
+        'url', 'https://games.wkylin.cn',
+        'githubUrl', 'https://github.com/wkylin/arrow-xiaoxiaoxiao-site'
       ),
       JSON_OBJECT(
         'name', 'visual.wkylin.cn',
@@ -107,7 +110,8 @@ VALUES (
           '持续维护代码结构和构建链路，保证模板在不同项目中可复用。'
         ),
         'result', '作为开源模板和演示工程，支撑多项目复用与落地。',
-        'url', 'https://github.com/wkylin/pro-react-admin'
+        'url', 'https://pro-react-admin.vercel.app/',
+        'githubUrl', 'https://github.com/wkylin/pro-react-admin'
       ),
       JSON_OBJECT(
         'name', 'pro-pyqt6-web',
@@ -141,7 +145,8 @@ VALUES (
           '补齐 transition fallback 清理和原生 button 键盘支持，覆盖 Tab、Enter、Space 等基础可访问性场景。'
         ),
         'result', '形成一个可在线访问的 Vue 3 交互组件 demo，用于展示复杂 UI 动效、手势识别和可访问性处理能力。',
-        'url', 'https://wkylin.github.io/tier-carousel-vue/'
+        'url', 'https://wkylin.github.io/tier-carousel-vue/',
+        'githubUrl', 'https://github.com/wkylin/tier-carousel-vue'
       ),
       JSON_OBJECT(
         'name', 'ng-funs',
@@ -152,7 +157,8 @@ VALUES (
           '通过 GitHub Pages 承载在线演示，保留前端技术演进过程中的实践痕迹。'
         ),
         'result', '作为老项目归档展示，补充个人前端技术路线和早期工程实践经历。',
-        'url', 'https://wkylin.github.io/ng-funs/home'
+        'url', 'https://wkylin.github.io/ng-funs/home',
+        'githubUrl', 'https://github.com/wkylin/ng-funs'
       )
     ),
     'skills', JSON_ARRAY(

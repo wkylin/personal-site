@@ -86,7 +86,8 @@ export const profileData: ProfileData = {
         "后端补齐操作日志、CSV/Excel 导出、备份恢复、登录失败锁定、页面权限与接口权限控制，并在启动时自动补充演示数据、回填库存和销量记录到 IoTDB。",
       ],
       result: "形成一个能跑通前台购买、后台管理、库存分析和数据回填的库存管理最小闭环，集中展示 Vue 全栈工程、关系型数据与时序数据协同建模能力。",
-      url: "https://github.com/wkylin/lotdb-vue",
+      url: "https://lotdb.wkylin.cn/",
+      githubUrl: "https://github.com/wkylin/lotdb-vue",
     },
     {
       name: "@w.ui/wui-react",
@@ -111,6 +112,7 @@ export const profileData: ProfileData = {
       ],
       result: "形成一个可持续维护的个人技术品牌首页：既能作为静态站点独立部署，也能接入 Node + MySQL 扩展为动态内容服务。",
       url: "https://wkylin.cn",
+      githubUrl: "https://github.com/wkylin/personal-site",
     },
     {
       name: "games.wkylin.cn",
@@ -122,6 +124,7 @@ export const profileData: ProfileData = {
       ],
       result: "作为小游戏展示站持续承载可玩性与互动演示。",
       url: "https://games.wkylin.cn",
+      githubUrl: "https://github.com/wkylin/arrow-xiaoxiaoxiao-site",
     },
     {
       name: "visual.wkylin.cn",
@@ -143,7 +146,8 @@ export const profileData: ProfileData = {
         "持续维护代码结构和构建链路，保证模板在不同项目中可复用。",
       ],
       result: "作为开源模板和演示工程，支撑多项目复用与落地。",
-      url: "https://github.com/wkylin/pro-react-admin",
+      url: "https://pro-react-admin.vercel.app/",
+      githubUrl: "https://github.com/wkylin/pro-react-admin",
     },
     {
       name: "pro-pyqt6-web",
@@ -178,6 +182,7 @@ export const profileData: ProfileData = {
       ],
       result: "形成一个可在线访问的 Vue 3 交互组件 demo，用于展示复杂 UI 动效、手势识别和可访问性处理能力。",
       url: "https://wkylin.github.io/tier-carousel-vue/",
+      githubUrl: "https://github.com/wkylin/tier-carousel-vue",
     },
     {
       name: "ng-funs",
@@ -189,6 +194,7 @@ export const profileData: ProfileData = {
       ],
       result: "作为老项目归档展示，补充个人前端技术路线和早期工程实践经历。",
       url: "https://wkylin.github.io/ng-funs/home",
+      githubUrl: "https://github.com/wkylin/ng-funs",
     },
   ],
   skills: [
